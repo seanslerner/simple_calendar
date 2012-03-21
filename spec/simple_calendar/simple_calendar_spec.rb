@@ -20,6 +20,10 @@ describe SimpleCalendar::ViewHelpers do
   end
 
   describe "month_header" do 
+    it "should render the month name" do
+      calendar = Calendar.new
+      calendar.month_header(DateTime.new(2012,3,31)).should eql("<h2><March 2012></h2>")
+    end
   end
 
   describe "day_header" do 

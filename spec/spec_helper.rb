@@ -20,4 +20,18 @@ end
 
 class Calendar
   include SimpleCalendar::ViewHelpers
+
+  def content_tag symbol, &block
+    html_string = ""
+    html_string << "<#{symbol.to_s}>"
+    html_string << block.call
+    html_string << "</#{symbol.to_s}>"
+    html_string
+  end
+
+  def calendar_path args 
+  end
+  def link_to text, path
+    "#{text}"
+  end
 end
