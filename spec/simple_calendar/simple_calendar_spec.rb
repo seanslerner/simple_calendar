@@ -3,7 +3,15 @@ require 'spec_helper.rb'
 describe SimpleCalendar::ViewHelpers do
 
   describe "calendar" do
-    pending
+    it "should make an html calendar" do
+      # @events = [Event.new("title", DateTime.new(2012,3,18)), 
+      #            Event.new("title2", DateTime.new(2012,3,22))]
+      # @calendar = Calendar.new
+      # puts @calendar.calendar @events do |evnt|
+      #   evnt.title
+      # end
+      pending "Params in day variable are causing problems"
+    end
   end
 
   describe "start_date" do
@@ -29,7 +37,7 @@ describe SimpleCalendar::ViewHelpers do
 
   describe "day_header" do 
     it "should render the days of the week" do
-      pending
+      pending "trouble with I18n"
     end
   end
 
@@ -43,7 +51,6 @@ describe SimpleCalendar::ViewHelpers do
       @calendar = Calendar.new
       @cal_string = @calendar.body(Date.new(2012,3,18), @events, @blck)
     end
-
     it "should start and end with tbody tags" do
       @cal_string.should include("<tbody>")
       @cal_string.should include("</tbody>")
@@ -83,10 +90,8 @@ describe SimpleCalendar::ViewHelpers do
     it "should select events with specific date" do
       @calendar.day_events(Date.new(2012,3,18), @events).should eql([@events[0]])
     end
-
     it "should not select events without specific date" do
       @calendar.day_events(Date.new(2012,4,18), @events).should eql([])
     end
   end 
-
 end 
