@@ -10,6 +10,12 @@ RSpec.configure do |config|
   config.formatter     = 'documentation'
 end
 
+class ActiveRecord
+  class Base
+    extend SimpleCalendar::ModelAdditions
+  end
+end
+
 class Event 
   attr_accessor :title, :start_time_column
   def initialize title, start
@@ -18,7 +24,7 @@ class Event
   end
 end
 
-class Calendar
+class Calendar < ActiveRecord::Base
   include SimpleCalendar::ViewHelpers
 
   def content_tag name, content_or_options_with_block = nil, options = nil, escape = true, &block
