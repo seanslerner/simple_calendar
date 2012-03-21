@@ -3,6 +3,7 @@ require 'spec_helper.rb'
 describe SimpleCalendar::ViewHelpers do
 
   describe "calendar" do
+    pending
   end
 
   describe "start_date" do
@@ -27,12 +28,50 @@ describe SimpleCalendar::ViewHelpers do
   end
 
   describe "day_header" do 
+    it "should render the days of the week" do
+      pending
+    end
   end
 
-  describe "body" do 
+  describe "body" do
+    before(:each) do 
+      @blck = Proc.new do |evnt|
+        evnt.title
+      end
+      @events = [Event.new("title", DateTime.new(2012,3,18)), 
+                 Event.new("title2", DateTime.new(2012,3,22))]
+      @calendar = Calendar.new
+      @cal_string = @calendar.body(Date.new(2012,3,18), @events, @blck)
+    end
+
+    it "should start and end with tbody tags" do
+      @cal_string.should include("<tbody>")
+      @cal_string.should include("</tbody>")
+    end
+    it "should include 7 td tags each week" do
+      7.times do
+        @cal_string.should match(/\<td\>\<\/td\>/)
+        @cal_string = @cal_string[@cal_string.index(/\<td\>\<\/td\>/)+9..-1]
+      end
+    end
+    it "should include a tr tags for each week (5 in total)" do
+      5.times do
+        @cal_string.should match(/\<tr\>/)
+        @cal_string = @cal_string[@cal_string.index(/\<tr\>/)+4..-1]
+      end
+    end
   end
 
   describe "day" do 
+    it "should render html for each day" do
+      blck = Proc.new do |evnt|
+        evnt.title
+      end
+      events = [Event.new("title", DateTime.new(2012,3,18)), 
+                 Event.new("title2", DateTime.new(2012,3,22))]
+      calendar = Calendar.new
+      calendar.day(Date.new(2012,3,18), events, blck).should eql("<td>#{events[0].title}</td>")
+    end
   end
 
   describe "day_events" do
