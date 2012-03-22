@@ -8,8 +8,14 @@ describe SimpleCalendar::ModelAdditions do
     calendar = Calendar.new
     calendar.should_not respond_to :has_calendar
   end
-
   it "should update the :start_time config" do
-    Calendar
+    #Calendar.has_calendar({:start_time => :my_start_time})
+    pending "Need to figure out how config works"
+  end
+  it "should set :start_time to start_time by default" do
+    pending "Need to figure out config"
+  end
+  it "should do something with :start_time_column method" do
+    pending
   end
 end 

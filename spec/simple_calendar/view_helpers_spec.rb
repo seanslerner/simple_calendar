@@ -7,13 +7,13 @@ describe SimpleCalendar::ViewHelpers do
                  Event.new("title2", DateTime.new(2012,3,22))]
   end
   describe "calendar" do
+    it "should make a table with the calendar class" do
+      pending
+    end
+    it "should set day equal using params" do
+      pending "Params causing a problem"
+    end
     it "should make an html calendar" do
-      # @events = [Event.new("title", DateTime.new(2012,3,18)), 
-      #            Event.new("title2", DateTime.new(2012,3,22))]
-      # @calendar = Calendar.new
-      # puts @calendar.calendar @events do |evnt|
-      #   evnt.title
-      # end
       pending "Params in day variable are causing problems"
     end
   end

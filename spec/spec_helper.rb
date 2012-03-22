@@ -29,6 +29,8 @@ end
 
 class Calendar < ActiveRecord::Base
   include SimpleCalendar::ViewHelpers
+  #include ActiveSupport::Configurable
+  #might help with config in ModelAdditions?
 
   def content_tag name, options = nil, escape = true, &block
     opt = if options.class == Hash 
