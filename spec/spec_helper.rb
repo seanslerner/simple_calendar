@@ -1,3 +1,6 @@
+require 'simplecov_custom_adapter'
+SimpleCov.start 'gem'
+
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'rubygems'
