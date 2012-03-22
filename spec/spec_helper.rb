@@ -27,9 +27,16 @@ end
 class Calendar < ActiveRecord::Base
   include SimpleCalendar::ViewHelpers
 
-  def content_tag name, content_or_options_with_block = nil, options = nil, escape = true, &block
+  def content_tag name, options = nil, escape = true, &block
+    opt = if options.class == Hash 
+      options.each {|k, v| "#{k}=\"#{v}\""} if options
+    elsif options.class == Fixnum
+      options
+    else
+      nil
+    end
     html_string = ""
-    html_string << "<#{name.to_s}>"
+    html_string << "<#{name.to_s}#{ opt if opt}>"
     html_string << block.call if block_given?
     html_string << "</#{name.to_s}>"
     html_string
