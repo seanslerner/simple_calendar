@@ -10,6 +10,6 @@ describe SimpleCalendar::ModelAdditions do
   end
 
   it "should update the :start_time config" do
-    pending
+    Calendar
   end
 end 
