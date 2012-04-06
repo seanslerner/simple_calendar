@@ -52,7 +52,15 @@ class Calendar < ActiveRecord::Base
   def link_to text, path
     "#{text}"
   end
+  def request
+    " "
+  end
   def concat string 
     string
+  end
+end
+class String
+  def fullpath
+    ' '
   end
 end
